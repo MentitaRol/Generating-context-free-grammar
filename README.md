@@ -37,14 +37,17 @@ Na'vi language is highly modular and allows us to create or adapt a word for spe
 Na’vi uses grammatical cases to indicate the role a noun plays in the narrative of the sentence, which allows more flexibility in sentence structure (Learn Na’vi, 2011)
 
 The order of Subject, Object and Verb is not constrained, allowing six core structures based on speaker preference.
-For example, for the sentence ‘I eat Fish’ we can express it like (Kelutral, n. d.)
 
-1.	oel payoangti yom
-2.	payoangti yom oel
-3.	yom oel payoangti
-4.	oel yom payoangti
-5.	payoangti oel yom
-6.	yom payoangti oel
+>For example, for the sentence ‘I eat Fish’ we can express it like: 
+
+>1.	oel payoangti yom
+>2.	payoangti yom oel
+>3.	yom oel payoangti
+>4.	oel yom payoangti
+>5.	payoangti oel yom
+>6.	yom payoangti oel
+
+>(Kelutral, n. d.)
 
 ## Models
 
