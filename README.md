@@ -220,6 +220,7 @@ It's important that if you don't have nltk installed before you install it corre
 1.- Open your terminal or command prompt.
 
 2.- Run the following command:
+
     pip install nltk
 
 Once nltk is installed we import the nltk library from Python and the CFG module from nltk to use Context free grammar
