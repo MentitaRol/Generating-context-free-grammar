@@ -89,6 +89,128 @@ Some adpositions trigger lenition, a phonetic phenomenon that alters the initial
 Because lenition is a phonological rule and cannot be captured by context-free grammar, it will not be modeled in this project. We will only use the most frequent and structurally consistent adpositions.
 
 ## Models
+To determine whether a sentence belongs to the Na'vi language, we will follow the principles of syntax analysis, also known as parsing.
+
+Syntax analysis is the second phase in the process of compiler design, following lexical analysis. Its primary objective is to verify the syntactic structure of a given input based on the formal grammar of the language. This is achieved by constructing a data structure known as a parse tree or syntax tree, which represents the hierarchical syntactic structure of the input. (GeeksforGeeks, 2025)
+
+The parser uses the predefined grammar rules of the language to build this tree. If the input string can be derived from the grammar and successfully mapped to the parse tree, it is considered syntactically correct. Otherwise, the parser will report a syntax error. (GeeksforGeeks, 2025)
+
+There are many types of parsers, the main difference is the order in which they read and how they build the parse tree or abstract syntax tree (AST).
+
+For this project, we will implement an LL(1) parser, which is one of the simplest and most commonly used types of parsers. It uses a predictive, top-down approach. This allows for efficient parsing without backtracking. (GeeksforGeeks, 2025)
+
+To successfully implement an LL(1) parser, we must ensure that the grammar used satisfies the requirements of LL(1) parsing. These include:
+
+•	Defining a grammar that accurately recognizes the structure of the Na'vi language.
+•	Eliminating any ambiguity within the grammar.
+•	Removing left recursion, which is not allowed in LL(1) grammars.
+
+### 1.- Generate a grammar that recognizes the language.
+The following context-free grammar was developed to simulate an abstraction of the Na'vi language. 
+
+    S -> VSO | SVO
+    VSO -> V NP NP
+    SVO -> NP V NP
+    V -> VTran | VIntran
+    NP ->  Sub | Sub Adpo | Adpo Sub | Adj Sub | Sub Adj | Adj Sub Adpo | Adpo Sub Adj | Adj Adpo Sub
+    NP -> NP NP
+    Sub -> NCase | ProNCase
+    NCase -> NAgen | NPatien
+    ProNCase -> ProNAgen | ProNPatien
+
+    VTran -> 'kllkem' | 'eykefu' | 'si' | 'taron' | 'tìreysi' | 'sngä' | 'kame' | 'nume'
+    VIntran -> 'tìran' | 'tswayon' | 'srew' | 'yom' | 'zup' | 'kim' 
+    NAgen -> 'oel' | 'pol' | 'tutel' | 'tsamsiyuìl' | 'ikranìl'
+    NPatien -> 'payoangit' | 'tutet' | 'yerikit' | 'pukit' | 'ikranti'
+    ProNAgen -> 'ayoel' | 'ngal' | 'ayfol' | 'mefol' | 'ayngal'
+    ProNPatien -> 'oeti' | 'mefoti' | 'oengati' | 'ayoengati' | 'poti' | 'ngati'
+    Adpo -> 'mì' | 'hu' | 'sì' | 'ro' | 'ta' | 'na' | 'äo' | 'eo'
+    Adj -> 'ngim' | 'lefpom' | 'tsawl' | 'sìltsan' | 'txur' | 'hìi'
+
+#### Key Features of the Grammar:
+**Syntactic Flexibility:** The grammar supports both major sentence structures found in Na'vi:
+•	VSO (Verb-Subject-Object)
+•	SVO (Subject-Verb-Object)
+
+**Verb Types:** It distinguishes between transitive and intransitive verbs through the rule V -> VTran | VIntran.
+
+**Noun Phrase Construction (NP):** Noun phrases support multiple variations, allowing flexibility in the order of:
+•	Adpositions (prepositions/postpositions)
+•	Adjectives
+•	Nouns or Pronouns
+
+Noun phrases can also be recursively combined (NP -> NP NP) to allow more complex expressions.
+
+**Noun Cases:** The grammar includes the two most common noun cases in Na'vi:
+•	Agentive (NAgen, ProNAgen): indicates the doer of an action
+•	Patientive (NPatien, ProNPatien): indicates the receiver of an action
+
+### 2.- Eliminate Ambiguity in the grammar.
+Now that we have defined the first version of our grammar, the next step is to ensure that it is free of ambiguity.
+
+A grammar is considered ambiguous if a single sentence can be derived in more than one way, resulting in multiple parse trees. This means that the sentence can be interpreted in different ways depending on how it is parsed, which is problematic for building a reliable syntax analyzer. (GeeksforGeeks, 2025)
+
+Analyzing our grammar, we realize that the main source of ambiguity lies in the rules:
+
+    NP -> Sub | Sub Adpo | Adpo Sub | Adj Sub | Sub Adj | Adj Sub Adpo | Adpo Sub Adj | Adj Adpo Sub
+    NP -> NP NP
+
+The first set of rules introduces ambiguity due to the flexible ordering of elements within a noun phrase (NP). The second rule (NP -> NP NP) allows for recursive in noun phrases, which also leads to multiple valid derivations for the same input.
+
+To resolve this, we need to restructure them into more specific and modular components:
+
+We define three subcategories of noun phrases:
+•	**NPA:** Noun phrases with adpositions
+    NPA -> Sub Adpo | Adpo Sub
+•	**NPAd:** Noun phrases with adjectives
+    NPAd -> Adj Sub | Sub Adj
+•	**NS:** Extended noun phrases with both adjectives and adpositions
+    NS -> Adj Sub Adpo | Adpo Sub Adj | Adj Adpo Sub
+
+Additionally, we are going to include new rules in the VSO and SVO structures to allow the creation of simple sentences with only subjects without these having to be necessarily linked to adjectives or adpositions. This also eliminate the ambiguity generated in the NP rule that allows multiple subjects to be added to sentences. 
+
+•	VSO -> V NP NP | V Sub Sub
+•	SVO -> NP V NP | Sub V Sub
+
+So, the NP rule has finally been transformed into:
+    NP -> NPA | NPAd | NS
+
+    NPA -> Sub Adpo | Adpo Sub
+    NPAd -> Adj Sub | Sub Adj
+    NS -> Adj Sub Adpo | Adpo Sub Adj | Adj Adpo Sub
+
+To see how this works more clearly, let's try an example with our first grammar generated in step 1: "Generate a grammar that recognizes the language."
+
+We'll try the sentence: "taron oel ngim äo tutet"
+
+With the first grammar model, this sentence generates ambiguity because it can be derived in multiple ways.
+![Image](https://github.com/user-attachments/assets/5f65da0b-fb76-4ffb-90fa-eee337ce03ba)
+
+![Image](https://github.com/user-attachments/assets/5cb2f3cf-1e7b-4776-b1c1-667da01175f2)
+
+This ambiguity occurs because the NP rule encompasses all possible combinations of a sentence, making it difficult to clearly identify which elements belong to each noun phrase and what syntactic roles they play.
+
+With the second model, the ambiguity is eliminated because specific rules are established for each type of noun phrase.
+![Image](https://github.com/user-attachments/assets/c57cac77-de6f-4333-8d81-5bdd60ef388d)
+
+In the second grammar, noun phrases are categorized into specific types (NPA, NPAd, NS), eliminating the ambiguity of the NP rule.
+
+### 3.- Eliminate left recursion in the grammar.
+With the disambiguation of our grammar complete, we can now proceed to analyze it for left recursion, which is another common issue that must be addressed in LL(1) parsers.
+
+According to Scaler:
+
+>"In compiler design, left recursion occurs when a grammar rule refers to itself in a way that hampers parsing." (Scaler, 2024)
+
+So we can see that Left recursion is present in a grammar when a non-terminal symbol recursively calls itself as the first symbol in one of its production rules. 
+A typical pattern for direct left recursion is:
+    A -> A a | B
+
+Where the nonterminal A references itself on the left side, resulting in an infinite loop.
+
+After checking all production rules in our updated grammar, we found that no left recursion is present. This is primarily due to the structural changes made during the disambiguation process, particularly in the elimination of recursive constructs like NP → NP NP.
+As a result, our grammar is free of left recursion and is structurally compatible with the requirements of LL(1) parsing.
+
 
 
 ## References
