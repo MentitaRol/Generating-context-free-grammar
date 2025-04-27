@@ -191,6 +191,7 @@ With the first grammar model, this sentence generates ambiguity because it can b
 This ambiguity occurs because the NP rule encompasses all possible combinations of a sentence, making it difficult to clearly identify which elements belong to each noun phrase and what syntactic roles they play.
 
 With the second model, the ambiguity is eliminated because specific rules are established for each type of noun phrase.
+
 ![Image](https://github.com/user-attachments/assets/c57cac77-de6f-4333-8d81-5bdd60ef388d)
 
 In the second grammar, noun phrases are categorized into specific types (NPA, NPAd, NS), eliminating the ambiguity of the NP rule.
