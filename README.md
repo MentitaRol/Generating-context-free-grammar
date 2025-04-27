@@ -37,7 +37,7 @@ When following, it takes a prefix a …
 For example, "ngima kilvan" and "kilvan angim" both mean "long river."
 
 #### Noun Cases
-Na'vi has what is referred to as "limited free word order", which means that in most circumstances the way a sentence is arranged is subject to how the speaker wants it to flow. This is achieved through marking nouns for their role in a sentence via noun case endings, which helps to identify their role in the sentence regardless of placement. (Kelutral, n. d.).
+Na'vi has what is referred to as "limited free word order which means that in most circumstances the way a sentence is arranged is subject to how the speaker wants it to flow. This is achieved through marking nouns for their role in a sentence via noun case endings, which helps to identify their role in the sentence regardless of placement. (Kelutral, n. d.).
 
 Na'vi nouns have 5 noun cases: agentive, patientive, genitive, dative, and topical.
 
@@ -215,15 +215,7 @@ As a result, our grammar is free of left recursion and is structurally compatibl
 ## Implementation
 To implement and test our models, we will be working with the nltk (Natural Language Toolkit) Python library, which is a very powerful tool that allows us to perform various tasks such as tokenization, morpho-syntactical labeling, sentiment analysis, etc.
 
-It's important that if you don't have nltk installed before you install it correctly. Here’s how to install it:
-
-1.- Open your terminal or command prompt.
-
-2.- Run the following command:
-
-    pip install nltk
-
-Once nltk is installed we import the nltk library from Python and the CFG module from nltk to use Context free grammar
+Import the nltk library from Python and the CFG module from nltk to use Context free grammar
 
     import nltk
     from nltk import CFG
@@ -293,6 +285,81 @@ If valid syntax trees are found, we printed using tree.pretty_print(). If no tre
             print()
     else:
         print(f"The sentence \"{sentence}\" is not part of the language")
+
+## Test
+To test our grammar, a set of sentences was defined with correct sentences that should be accepted and incorrect sentences that the program should not accept:
+
+### Correct sentences
+**pol eykefu oeti :** 
+**tsamsiyuìl taron yerikit:**
+**tutel kame pukit:**
+**oel kame ngati:**
+**kllkem oel pol:**
+**tìreysi mefol tsamsiyuìl:**
+**tutel txur tswayon hu ikranti:**
+**kame ngati lefpom eo yerikit hìi:**
+**mì ayfol sìltsan tìreysi tsamsiyuìl txur:**
+**ayoel ro srew lefpom sì oel:**
+**zup ikranti ta oel tsawl:**
+**yom pol sìltsan tsawl payoangit:**
+**kllkem ikranìl txur tutet sìltsan:**
+**kame oel mì tutet ngim:**
+**pukit sìltsan nume mì oel:**
+**kllkem tsamsiyuìl txur tutet hìi:**
+**tìreysi ayoel ro tutet sìltsan:**
+**nume ngal ta pukit ngim:**
+**mì ikranìl tsawl tswayon ayfol sìltsan:**
+
+### Incorrect sentences
+**tsamsiyuìl txur taron yerikit hu tsamsiyuìl lefpom:**
+**txur ikranìl ro ngim yerikit eykefu poti:**
+**oel sì ayoel lefpom srew ro:**
+**tsamsiyuìl tìran ro ngim:**
+**ayoel si mì tsawl mefoti:**
+**mefol taron ta yerikit:**
+
+### Running the program
+
+Before running the program, verify that you have the necessary dependencies to execute it 
+
+1.- First, ensure that pip is installed for the version of Python you are using 
+
+    python -m ensurepip --upgrade
+
+This should install pip for your current Python installation.
+
+2. Install nltk Using pip
+
+    python -m pip install nltk
+
+3.- Verify the Installation
+
+    python -m pip show nltk
+
+Now that everything is set up, use the following command in the terminal to run the program:
+
+    python NaviGrammar.py
+
+
+This will print whether each sentence is valid or invalid, if a sentence is valid it will display the parse tree and if its invalid it will display a message indicating that the sentence is not part of the language.
+
+### Correct sentences Tests:
+
+![Image](https://github.com/user-attachments/assets/de679bd3-862a-4744-8c13-40ab433bf436)
+
+![Image](https://github.com/user-attachments/assets/01a87bec-8450-4f44-9e01-d67aa99ca218)
+
+![Image](https://github.com/user-attachments/assets/50655f35-45bd-4538-982c-c1949034cc3f)
+
+![Image](https://github.com/user-attachments/assets/6c66255a-15c5-4372-beed-612186b3b410)
+
+![Image](https://github.com/user-attachments/assets/91c4965b-5026-4f03-842f-e0946a994166)
+
+![Image](https://github.com/user-attachments/assets/9866b1da-0847-424c-a747-65f2e680bbdf)
+
+### Incorrect sentences Tests:
+
+![Image](https://github.com/user-attachments/assets/10f3aa62-0ad8-4a6e-b678-2798e2c49030)
 
 ## References
 Learn Na’vi. (2011). Grammar. https://learnnavi.org/navi-grammar/
