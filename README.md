@@ -261,9 +261,11 @@ Then we define our context-free grammar
     """)
 
 With the grammar defined, we create a parser that will use this grammar to parse input sentences and generate syntax trees.
+
     parser = nltk.ChartParser(grammar)
 
 To correctly test our grammar, we define a set of correct and incorrect sentences (we will go into more detail on this in the testing stage)
+
     sentences = [
         # Correct sentences
         "pol eykefu oeti",
@@ -279,6 +281,7 @@ The sentences are processed in a loop where each sentence is split into tokens u
         tokens = sentence.split()
 
 The sentence tokens are passed to the parser, which tries to match the grammar and generate possible syntax trees.
+
     trees = list(parser.parse(tokens))
 
 If valid syntax trees are found, we printed using tree.pretty_print(). If no trees are found, a message is printed indicating that the sentence does not belong to the language.
