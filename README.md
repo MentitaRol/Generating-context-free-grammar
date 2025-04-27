@@ -212,7 +212,84 @@ Where the nonterminal A references itself on the left side, resulting in an infi
 After checking all production rules in our updated grammar, we found that no left recursion is present. This is primarily due to the structural changes made during the disambiguation process, particularly in the elimination of recursive constructs like NP → NP NP.
 As a result, our grammar is free of left recursion and is structurally compatible with the requirements of LL(1) parsing.
 
+## Implementation
+To implement and test our models, we will be working with the nltk (Natural Language Toolkit) Python library, which is a very powerful tool that allows us to perform various tasks such as tokenization, morpho-syntactical labeling, sentiment analysis, etc.
 
+It's important that if you don't have nltk installed before you install it correctly. Here’s how to install it:
+
+1.- Open your terminal or command prompt.
+
+2.- Run the following command:
+    pip install nltk
+
+Once nltk is installed we import the nltk library from Python and the CFG module from nltk to use Context free grammar
+
+    import nltk
+    from nltk import CFG
+
+To split the sentences into tokens, we use nltk.download('punkt'). This downloads the tokenizer model required for breaking down text into individual words.
+
+    nltk.download('punkt')
+
+Then we define our context-free grammar
+
+    grammar = CFG.fromstring("""
+        S -> VSO | SVO
+        VSO -> V NP NP | V Sub Sub
+        SVO -> NP V NP | Sub V Sub
+        V -> VTran | VIntran
+        
+        NP -> NPA | NPAd | NS
+        
+        NPA -> Sub Adpo | Adpo Sub 
+        NPAd -> Adj Sub | Sub Adj
+        NS -> Adj Sub Adpo | Adpo Sub Adj | Adj Adpo Sub
+        
+        Sub -> NCase | ProNCase
+        NCase -> NAgen | NPatien
+        ProNCase -> ProNAgen | ProNPatien
+
+        VTran -> 'kllkem' | 'eykefu' | 'si' | 'taron' | 'tìreysi' | 'sngä' | 'kame' | 'nume'
+        VIntran -> 'tìran' | 'tswayon' | 'srew' | 'yom' | 'zup' | 'kim' 
+        NAgen -> 'oel' | 'pol' | 'tutel' | 'tsamsiyuìl' | 'ikranìl'
+        NPatien -> 'payoangit' | 'tutet' | 'yerikit' | 'pukit' | 'ikranti'
+        ProNAgen -> 'ayoel' | 'ngal' | 'ayfol' | 'mefol' | 'ayngal'
+        ProNPatien -> 'oeti' | 'mefoti' | 'oengati' | 'ayoengati' | 'poti' | 'ngati'
+        Adpo -> 'mì' | 'hu' | 'sì' | 'ro' | 'ta' | 'na' | 'äo' | 'eo'
+        Adj -> 'ngim' | 'lefpom' | 'tsawl' | 'sìltsan' | 'txur' | 'hìi'
+    """)
+
+With the grammar defined, we create a parser that will use this grammar to parse input sentences and generate syntax trees.
+    parser = nltk.ChartParser(grammar)
+
+To correctly test our grammar, we define a set of correct and incorrect sentences (we will go into more detail on this in the testing stage)
+    sentences = [
+        # Correct sentences
+        "pol eykefu oeti",
+        "tsamsiyuìl taron yerikit",
+        "tutel kame pukit",
+        "oel kame ngati",
+
+        ...
+    ]
+
+The sentences are processed in a loop where each sentence is split into tokens using the .split() function.
+
+    for sentence in sentences:
+        tokens = sentence.split()
+
+The sentence tokens are passed to the parser, which tries to match the grammar and generate possible syntax trees.
+    trees = list(parser.parse(tokens))
+
+If valid syntax trees are found, we printed using tree.pretty_print(). If no trees are found, a message is printed indicating that the sentence does not belong to the language.
+
+    if trees:
+        print(f"The tree for the sentence \"{sentence}\" is:")
+        for tree in trees:
+            tree.pretty_print()
+            print()
+    else:
+        print(f"The sentence \"{sentence}\" is not part of the language")
 
 ## References
 Learn Na’vi. (2011). Grammar. https://learnnavi.org/navi-grammar/
