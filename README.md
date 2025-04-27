@@ -270,7 +270,6 @@ To correctly test our grammar, we define a set of correct and incorrect sentence
         "tsamsiyuìl taron yerikit",
         "tutel kame pukit",
         "oel kame ngati",
-
         ...
     ]
 
