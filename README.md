@@ -212,7 +212,7 @@ Where the nonterminal A references itself on the left side, resulting in an infi
 After checking all production rules in our updated grammar, we found that no left recursion is present. This is primarily due to the structural changes made during the disambiguation process, particularly in the elimination of recursive constructs like NP → NP NP.
 As a result, our grammar is free of left recursion and is structurally compatible with the requirements of LL(1) parsing.
 
-### 2.- Final grammar.
+### Final grammar.
 
     S -> VSO | SVO
     VSO -> V NP NP | V Sub Sub
