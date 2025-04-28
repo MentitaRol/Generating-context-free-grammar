@@ -316,56 +316,56 @@ If valid syntax trees are found, we printed using tree.pretty_print(). If no tre
 To test our grammar, a set of sentences was defined with correct sentences that should be accepted and incorrect sentences that the program should not accept:
 
 ### Correct sentences
-**pol eykefu oeti :** 
+**pol eykefu oeti :** She loves me
 
-**tsamsiyuìl taron yerikit:**
+**tsamsiyuìl taron yerikit:** The warrior hunts a hexapede
 
-**tutel kame pukit:**
+**tutel kame pukit:** The person sees the book
 
-**oel kame ngati:**
+**oel kame ngati:** I see you
 
-**kllkem oel pol:**
+**kllkem oel pol:** I help him
 
-**tìreysi mefol tsamsiyuìl:**
+**tìreysi mefol tsamsiyuìl:** Those two give life to the warriors
 
-**tutel txur tswayon hu ikranti:**
+**tutel txur tswayon hu ikranti:** The strong person flies with the banshee
 
-**kame ngati lefpom eo yerikit hìi:**
+**kame ngati lefpom eo yerikit hìi:** I see you happy in front of the small hexapede
+ 
+**mì ayfol sìltsan tìreysi tsamsiyuìl txur:** In the good ones, the strong warrior lives
 
-**mì ayfol sìltsan tìreysi tsamsiyuìl txur:**
+**ayoel ro srew lefpom sì oel:** We dance happily at somewhere
 
-**ayoel ro srew lefpom sì oel:**
+**zup ikranti ta oel tsawl:** The big banshee falls from me
 
-**zup ikranti ta oel tsawl:**
+**yom pol sìltsan tsawl payoangit:** He/she eats the good big fish
 
-**yom pol sìltsan tsawl payoangit:**
+**kllkem ikranìl txur tutet sìltsan:** The strong banshee helps the good person
 
-**kllkem ikranìl txur tutet sìltsan:**
+**kame oel mì tutet ngim:** I see the tall person
 
-**kame oel mì tutet ngim:**
+**pukit sìltsan nume mì oel:** The good book teaches in me
 
-**pukit sìltsan nume mì oel:**
+**kllkem tsamsiyuìl txur tutet hìi:** The strong warrior helps the small person
 
-**kllkem tsamsiyuìl txur tutet hìi:**
+**tìreysi ayoel ro tutet sìltsan:** We give life at the good person
 
-**tìreysi ayoel ro tutet sìltsan:**
+**nume ngal ta pukit ngim:** You learn from the large book
 
-**nume ngal ta pukit ngim:**
-
-**mì ikranìl tsawl tswayon ayfol sìltsan:**
+**mì ikranìl tsawl tswayon ayfol sìltsan:** The good ones fly in the big banshee
 
 ### Incorrect sentences
-**tsamsiyuìl txur taron yerikit hu tsamsiyuìl lefpom:**
+**tsamsiyuìl txur taron yerikit hu tsamsiyuìl lefpom:** The strong warrior hunts the hexapede with the happy warrior
 
-**txur ikranìl ro ngim yerikit eykefu poti:**
+**txur ikranìl ro ngim yerikit eykefu poti:** The strong banshee feels (love for) him/her at the tall hexapede
 
-**oel sì ayoel lefpom srew ro:**
+**oel sì ayoel lefpom srew ro:** We happily dance at some place
 
-**tsamsiyuìl tìran ro ngim:**
+**tsamsiyuìl tìran ro ngim:** The warrior runs at the tall place
 
-**ayoel si mì tsawl mefoti:**
+**ayoel si mì tsawl mefoti:** We act inside the big place of those two
 
-**mefol taron ta yerikit:**
+**mefol taron ta yerikit:** Those two hunt the hexapede.
 
 ### Running the program
 
