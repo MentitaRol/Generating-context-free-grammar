@@ -291,31 +291,54 @@ To test our grammar, a set of sentences was defined with correct sentences that 
 
 ### Correct sentences
 **pol eykefu oeti :** 
+
 **tsamsiyuìl taron yerikit:**
+
 **tutel kame pukit:**
+
 **oel kame ngati:**
+
 **kllkem oel pol:**
+
 **tìreysi mefol tsamsiyuìl:**
+
 **tutel txur tswayon hu ikranti:**
+
 **kame ngati lefpom eo yerikit hìi:**
+
 **mì ayfol sìltsan tìreysi tsamsiyuìl txur:**
+
 **ayoel ro srew lefpom sì oel:**
+
 **zup ikranti ta oel tsawl:**
+
 **yom pol sìltsan tsawl payoangit:**
+
 **kllkem ikranìl txur tutet sìltsan:**
+
 **kame oel mì tutet ngim:**
+
 **pukit sìltsan nume mì oel:**
+
 **kllkem tsamsiyuìl txur tutet hìi:**
+
 **tìreysi ayoel ro tutet sìltsan:**
+
 **nume ngal ta pukit ngim:**
+
 **mì ikranìl tsawl tswayon ayfol sìltsan:**
 
 ### Incorrect sentences
 **tsamsiyuìl txur taron yerikit hu tsamsiyuìl lefpom:**
+
 **txur ikranìl ro ngim yerikit eykefu poti:**
+
 **oel sì ayoel lefpom srew ro:**
+
 **tsamsiyuìl tìran ro ngim:**
+
 **ayoel si mì tsawl mefoti:**
+
 **mefol taron ta yerikit:**
 
 ### Running the program
@@ -362,8 +385,16 @@ This will print whether each sentence is valid or invalid, if a sentence is vali
 ![Image](https://github.com/user-attachments/assets/10f3aa62-0ad8-4a6e-b678-2798e2c49030)
 
 ## References
-Learn Na’vi. (2011). Grammar. https://learnnavi.org/navi-grammar/
+GeeksforGeeks. (April 2, 2025). Introduction to Syntax Analysis in Compiler Design. GeeksforGeeks. https://www.geeksforgeeks.org/introduction-to-syntax-analysis-in-compiler-design/ 
+
+GeeksforGeeks. (February 6, 2025). Construction of LL(1) Parsing Table. GeeksforGeeks. https://www.geeksforgeeks.org/construction-of-ll1-parsing-table/
+
+GeeksforGeeks. (January 28, 2025). Ambiguous grammar. GeeksforGeeks. https://www.geeksforgeeks.org/ambiguous-grammar/ 
 
 Kelutral. (n. d). Learn the Na’vi Language Online at Kelutral.org. https://kelutral.org/ 
 
 Kelutral. (n. d). Na’vi linguistic information. https://kelutral.org/linguistics
+
+Learn Na’vi. (2011). Grammar. https://learnnavi.org/navi-grammar/
+
+Scaler. (January 11, 2024). What is Left Recursion and How to Eliminate It? - Scaler Topics. Scaler Topics. https://www.scaler.com/topics/left-recursion-in-compiler-design/ 
