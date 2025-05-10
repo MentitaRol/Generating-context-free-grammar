@@ -411,6 +411,9 @@ This will print whether each sentence is valid or invalid, if a sentence is vali
 ![Image](https://github.com/user-attachments/assets/10f3aa62-0ad8-4a6e-b678-2798e2c49030)
 
 ## Analysis
+
+### Chomsky Hierarchy Classification
+
 The Chomsky hierarchy is a classification of formal grammars based on the complexity of the rules used to generate strings in a language.
 According to Chomsky hierarchy, grammar is divided into 4 types: 
 
@@ -445,6 +448,17 @@ After eliminated the ambiguity and the left recursion, our grammar is still at l
 
 The grammar is simply cleaner and more modular, but it doesn't change to a stricter or more powerful type.
 
+### Time Complexity 
+
+Since our grammar is Type 2 (Context-Free Grammar):
+
+*** Original Grammar: ***
+
+In the worst case, the time complexity is **O(n³)** because we use the CYK algorithm for parsing. This algorithm works by considering all possible combinations of substrings and non-terminal symbols. (GeeksforGeeks, 2020)
+
+*** Unambiguous Grammar and Left Recursion: ***
+
+At this stage, our grammar has been modified to eliminate ambiguity and remove left recursion. As a result, we are now using an LL(1) parser, which allows for a worst-case time complexity of **O(n)**.
 
 ## References
 GeeksforGeeks. (April 2, 2025). Introduction to Syntax Analysis in Compiler Design. GeeksforGeeks. https://www.geeksforgeeks.org/introduction-to-syntax-analysis-in-compiler-design/ 
@@ -452,6 +466,8 @@ GeeksforGeeks. (April 2, 2025). Introduction to Syntax Analysis in Compiler Desi
 GeeksforGeeks. (February 6, 2025). Construction of LL(1) Parsing Table. GeeksforGeeks. https://www.geeksforgeeks.org/construction-of-ll1-parsing-table/
 
 GeeksforGeeks. (January 28, 2025). Ambiguous grammar. GeeksforGeeks. https://www.geeksforgeeks.org/ambiguous-grammar/ 
+
+GeeksforGeeks. (June 22, 2020). CYK Algorithm for Context Free Grammar. GeeksforGeeks. https://www.geeksforgeeks.org/cyk-algorithm-for-context-free-grammar/
 
 GeeksforGeeks. (October 18, 2024). Chomsky Hierarchy in Theory of Computation. GeeksforGeeks. https://www.geeksforgeeks.org/chomsky-hierarchy-in-theory-of-computation/ 
 
